@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject HealthImg;
     [SerializeField] AudioManager asm; 
     [SerializeField] AudioClip LossSound;
+
     public static GameManager Instance { get; private set; }
     public enum GameState
     {
@@ -45,40 +45,6 @@ public class GameManager : MonoBehaviour
     private int score = 0;
     public UnityEvent<int> OnScoreValueChanged;
 
-    public int Lives
-    {
-        get => lives;
-        set
-        {
-            lives = value;
-
-            if (lives > maxLives) lives = maxLives;
-
-            Debug.Log("Lives value has changed to " + lives.ToString());
-            if (lives < 0)
-                StartCoroutine(DelayedGameOver(0.5f)); 
-
-            DecreaseHealthBar(); 
-
-            if (OnLifeValueChanged != null)
-                OnLifeValueChanged.Invoke(lives);
-        }
-    }
-
-    public UnityEvent<int> OnLifeValueChanged;
-
-    private int lives = 3;
-    public int maxLives = 3;
-
-    public void DecreaseHealthBar()
-    {
-        if (HealthImg != null)
-        {
-            RectTransform healthRectTransform = HealthImg.GetComponent<RectTransform>();
-            healthRectTransform.sizeDelta -= new Vector2(10f, 0f); 
-        }
-    }
-
     IEnumerator DelayedGameOver(float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -95,7 +61,6 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 SceneManager.LoadScene("MainMenu");
-                Lives = 3;
                 Score = 3;
             }
     }
