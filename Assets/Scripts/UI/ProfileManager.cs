@@ -6,11 +6,13 @@ using UnityEngine.EventSystems;
 
 public class ProfileManager : MonoBehaviour
 {
+    [SerializeField] GameObject characterProfile; 
     [SerializeField] GameObject profilePage;
     [SerializeField] GameObject[] relationshipPages;
 
     [SerializeField] Button backButton;
     [SerializeField] Button nextButton;
+    [SerializeField] Button closeButton; 
     [SerializeField] AudioClip buttonSound; 
 
     private AudioManager audioManager;
@@ -33,6 +35,13 @@ public class ProfileManager : MonoBehaviour
             nextButton.onClick.AddListener(ShowNextPage);
             EventTrigger nextButtonTrigger = nextButton.gameObject.AddComponent<EventTrigger>();
             AddPointerEnterEvent(nextButtonTrigger, PlayButtonSound);
+        }
+
+        if (closeButton)
+        {
+            closeButton.onClick.AddListener(ClosePage);
+            EventTrigger closeButtonTrigger = closeButton.gameObject.AddComponent<EventTrigger>();
+            AddPointerEnterEvent(closeButtonTrigger, PlayButtonSound); 
         }
 
         if (resetPage)
@@ -80,6 +89,14 @@ public class ProfileManager : MonoBehaviour
         if (currentPage >= relationshipPages.Length + 1)
             currentPage = 0;
         ShowPage(currentPage);
+    }
+
+    void ClosePage()
+    {
+        if (characterProfile!= null)
+        {
+            characterProfile.SetActive(false);
+        }
     }
 
     void ShowPage(int pageIndex)
