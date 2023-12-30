@@ -16,9 +16,9 @@ MonoBehaviour:
   backstory: "He/Him, an Animation student.  Cory is a calm and level headed individual,
     who treats those around him with nothing but respect. His smile and his optimistic
     outlook tends to be contagious. He loves helping people, expecting nothing in
-    return, and has one of the kindest hearts. Cory enjoys video editing, drawing,
-    and photography, and values a quiet space. His favourite food is anything that\u2019s
-    not sushi.  "
+    return, and has one of the kindest hearts. Cory enjoys video editing, gaming,
+    and cars, and values a quiet space. His favourite food is anything that\u2019s
+    not seaweed or banana.  "
   loveInterest: Alex
   portrait: {fileID: 21300000, guid: 2f8602847c88aba49a20cd38fa06ca14, type: 3}
   char1: Alex
@@ -26,8 +26,42 @@ MonoBehaviour:
   char3: Autumn
   char4: Rachel
   char5: Skylar
-  relationship1: idk
-  relationship2: idk
-  relationship3: idk
-  relationship4: idk
-  relationship5: idk
+  relationship1: "Alex is one of the closest friends I have. We often stay up late
+    just talking about absolute nonsense. They\u2019re easy to have fun with, even
+    if we\u2019re in complete silence. Before we met, I knew they were really shy,
+    but I\u2019ve always admired how they are always true to themselves. They put
+    in a lot of passion into their interests, enough so that they can easily draw
+    you into them. Now, every week, we always get together to watch the new episodes
+    of whatever new show is out. Admittedly, they\u2019re always the highlight of
+    my week. We both don\u2019t do well when it comes to crowds, but when they\u2019re
+    by my side, a loud room is much more manageable."
+  relationship2: "Asaph, in my honest opinion, is a bit of a wild card at times.
+    He acts gloomy from a distance, but really, he\u2019s probably the happiest guy
+    I know. I\u2019ve been told my smile is contagious, but Asaph never fails to
+    make anyone laugh. He\u2019s showed me how to play some games before in the past,
+    and despite how awful I am at them and how good he is, he doesn\u2019t really
+    seem to care. He was just happy with the company he had. Also, I\u2019ve never
+    seen anyone put so much passion into their favourite music artists."
+  relationship3: "At first glance, Autumn can come off a bit harsh. But she\u2019s
+    actually very kind and pretty funny. Interestingly enough, she changes her hair
+    colour every now and then, so I\u2019m surprised people are shocked when she
+    tells them she\u2019s into anime. Seriously, she has blue hair--I know that\u2019s
+    a stereotype, but still. I can\u2019t help but feel bad when she tells me about
+    things I don\u2019t really get, but I\u2019ll always try my best to understand
+    them. She called me a period drama man once, and I kind of took offense to that,
+    but apparently that\u2019s a compliment, so that\u2019s nice."
+  relationship4: "Rachel is nice, from what I\u2019ve seen. She\u2019s always putting
+    everyone before her, even if she\u2019s not too close with them. We met a while
+    back during a camp, and I noticed she didn\u2019t have a partner during the dance,
+    so I approached her. Unfortunately, she kinda left in the middle of it, and I
+    can\u2019t blame her for that. Turned out she was just a little embarrassed,
+    not by me, but the idea of dancing in a room full of people, which I totally
+    agree with. We were 13 at the time, and it\u2019s nice to see her confidence
+    has grown over time. "
+  relationship5: "I don\u2019t really know much about Skylar. He\u2019s pretty soft
+    spoken, and I know he\u2019s intelligent, but I haven\u2019t had the chance to
+    talk with him as much. He\u2019s kind, respectful, but it\u2019s hard to tell
+    what he could be thinking at times. The way he carries himself, he seems like
+    a mystery. He helped me a couple times with some English essays, and he always
+    refused to accept payment. Admittedly, I wish I had the chance to befriend him
+    during that time, since he seems a bit more closed off these days. "

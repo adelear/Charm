@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: Alex
   m_EditorClassIdentifier: 
   name: Alex
-  backstory: "They/Them, an Animation student.  Enjoys anime, and drawing, and uses
+  backstory: 'They/Them, a Game Design student.  Enjoys anime, and drawing, and uses
     them as inspiration to create their own stories. Rarely ever gets more than 5
     hours of sleep, due to staying up late playing farming games at night. Their
-    favourite food is anything from McDonald\u2019s, but loves Happy Meals the most.
-    Alex is a calm and kindhearted individual, who many of their friends wholeheartedly
-    appreciate.  "
+    favourite food is probably either bistek or sinigang. Alex is a calm and kindhearted
+    individual, who many of their friends wholeheartedly appreciate.  '
   loveInterest: Cory
   portrait: {fileID: 21300000, guid: 393c7c6443df5f04cba7041baf4725ea, type: 3}
   char1: Cory

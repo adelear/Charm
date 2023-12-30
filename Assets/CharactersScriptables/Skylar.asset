@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: Skylar
   m_EditorClassIdentifier: 
   name: Skylar
-  backstory: STINKY WAH WAH 4
+  backstory: "He/They, an English student.  Skylar is a quiet and soft spoken individual.
+    He tends to keep to himself. When he\u2019s around others, his thoughts are always
+    racing throughout his mind, and he finds it difficult to keep himself composed.
+    Skylar enjoys reading, unless it\u2019s a hardcover book, which he finds difficult
+    to annotate in. He always loves watching documentaries, and the occasional youtube
+    theory video. "
   loveInterest: Asaph
   portrait: {fileID: 21300000, guid: 42654d7df66f61a4c9f81bf9f15198a2, type: 3}
   char1: Alex
@@ -21,8 +26,50 @@ MonoBehaviour:
   char3: Autumn
   char4: Cory
   char5: Rachel
-  relationship1: idk
-  relationship2: idk
-  relationship3: idk
-  relationship4: idk
-  relationship5: idk
+  relationship1: "Alex is a very sweet individual. It\u2019s a pity I don\u2019t
+    get to talk with them as much. I feel like they are as quiet as me, especially
+    when all our friends are talking and neither of us chime in on the conversation.
+    I\u2019m not very good at starting conversations. I think the only people I have
+    proper friendships with are the ones who approached me first. Unfortunately,
+    I think Alex and I are the same type of people who require others to start the
+    conversation first. "
+  relationship2: "I didn\u2019t like Asaph when we first met. I kinda thought he
+    was a loud annoying jock that didn\u2019t really respect boundaries. Until one
+    day, I needed a calculus tutor, and he offered to help me immediately. Turns
+    out he\u2019s some kind of a math genius and not some jock whose only personality
+    was liking Taylor Swift to impress girls. Turns out there\u2019s a whole emotional
+    side to him that I never even noticed. Did you know he\u2019s scared of heights?
+    I\u2019ve berated myself ever since we became friends for judging him based on
+    his appearance. Nowadays, I find myself joining him to his little gym runs just
+    because I enjoy talking to him. My anxiety makes it difficult to be able to handle
+    crowds at times without feeling like wanting to combust, but he\u2019s always
+    patient with me.  "
+  relationship3: "Autumn is one of the smartest people I know. We get into little
+    arguments over the books we read, and usually have different opinions, but hearing
+    her reasoning is always interesting and incredibly insightful. We can spend hours
+    just sitting in silence, reading away or doing our own thing, and I really do
+    also appreciate her company. She can be a bit too honest at times, but I truly
+    do value her opinion. Sometimes I\u2019ll hand her my essays and she critiques
+    them. Sometimes my ego does get hurt, but her comments on my work really are
+    incredibly helpful. I don\u2019t like it when she critiques my outfits though.
+    There\u2019s some honest opinions that sometimes, I\u2019d appreciate it if she
+    lied about them. "
+  relationship4: "Cory is one of the kindest people I know. It\u2019s nice to know
+    someone who appreciates a quiet space like me. We don\u2019t talk often, but
+    I find myself relaxing in our silence when we sit in a corner while our friends
+    talk or engage in other activities. I feel like Cory is kind of a father figure
+    of our group, in a non weird way. He\u2019s always driving everyone around and
+    I wish I could show how much I appreciate everything he does for us, and me,
+    even though he doesn\u2019t know me that well. I got him a Christmas present
+    of a miniature version of his car, but I have no idea when the right time to
+    give it to him would be, or how I could even give him the gift. Every attempt
+    I make, I end up becoming a giant mess of words. "
+  relationship5: "Rachel was one of my best friends when we were little. We shared
+    all of our interests together. Sure, she never read Harry Potter, but for someone
+    with an incredibly short attention span, she always listened to everything I
+    said about my favourite wizard. She fell a lot as a child, and I always got her
+    bandaids for them. I wish things ended up differently and I never moved away.
+    Now that I\u2019m back and I see her sometimes, I can\u2019t help but feel like
+    I can\u2019t talk to them anymore. I\u2019ve missed so much, how can I possibly
+    catch up to who she\u2019s become? I never even took the chance to call or email
+    her after I moved away, so she probably hates me or thinks I hate her."

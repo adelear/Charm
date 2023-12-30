@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] GameObject characterProfile; 
     private Rigidbody2D rb;
     private float speed = 5.0f;
     private float mx;
@@ -17,15 +18,36 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        mx = Input.GetAxisRaw("Horizontal");
-        my = Input.GetAxisRaw("Vertical");
-        RotatePlayerTowardsCursor(); 
-
-        if (Input.GetKeyDown(KeyCode.E)) LoveSpellManager.Instance.DisplayCouples();
+        if (characterProfile != null)
+        {
+            if (!characterProfile.activeSelf)
+            {
+                mx = Input.GetAxisRaw("Horizontal");
+                my = Input.GetAxisRaw("Vertical");
+                RotatePlayerTowardsCursor();
+            }
+            else
+            {
+                rb.velocity = Vector3.zero; 
+            }
+        }
+        else
+        {
+            Debug.Log("Character Profile not set!"); 
+        }
+        
+        //if (Input.GetKeyDown(KeyCode.E)) LoveSpellManager.Instance.DisplayCouples();
     }
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(mx, my).normalized * speed; 
+        if (!characterProfile.activeSelf)
+        {
+            rb.velocity = new Vector2(mx, my).normalized * speed;
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
     }
 
     private void RotatePlayerTowardsCursor()

@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: Asaph
   m_EditorClassIdentifier: 
   name: Asaph
-  backstory: STINKY WAH WAH 3
+  backstory: "He/Him, a Math/Physics student.  Asaph unintentionally puts on an intimidating
+    appearance. He tends to scowl and glare because he needs glasses, but refuses
+    to ever wear them. That, in turn with being the tallest one of his friends, makes
+    those who don\u2019t know him all the more wary of him. Asaph enjoys working
+    out with his \u201Cbeast mode\u201D playlist that consists of Taylor Swift, BTS,
+    and the occasional Mitski.  "
   loveInterest: Skylar
   portrait: {fileID: 21300000, guid: 2b7ddba014774f848bd775870b7a4374, type: 3}
   char1: Alex
@@ -21,8 +26,47 @@ MonoBehaviour:
   char3: Cory
   char4: Rachel
   char5: Skylar
-  relationship1: idk
-  relationship2: idk
-  relationship3: idk
-  relationship4: idk
-  relationship5: idk
+  relationship1: "Alex is my day one. We\u2019ve known each other since we were little,
+    thanks to our familes. They\u2019re really the only person to blame for the upbringing
+    of my KPOP and Taylor Swift obsession, since they were the one who constantly
+    listened to it when we were little. Alex is absolutely so kind, I don\u2019t
+    even think they\u2019ve ever hurt a fly before. One time, I covered an ant hill
+    with sand and Alex started crying. We always sing in karaoke together with our
+    families, and I\u2019m always so surprised how good of a singer Alex is, it\u2019s
+    actually not fair. They don\u2019t even know the words to any Celine Dion songs
+    but they still get, like, 100% on them. For New Years, we\u2019re gonna have
+    another karaoke party, so you better bet I\u2019m going to outshine them for
+    once."
+  relationship2: "Honestly, I don\u2019t know if Autumn likes me. I thought it would
+    be really cool if we became closer friends because she\u2019s the only one I
+    know who listens to BTS, but I might\u2019ve frightened her a little. I even
+    asked her for her bias as a joke, hopefully to loosen up some tension. I\u2019ve
+    heard she can be really nice once you do get to know her though! I feel like
+    maybe I try too hard when I approach her, but  I don\u2019t really know how else
+    to get her to like me. Hopefully we can get a bit closer over this winter break."
+  relationship3: "Cory is such a nice guy. I don\u2019t know how, but I\u2019ve never
+    even witnessed him say a curse word or insult anyone. Unfortunately, he absolutely
+    refuses to join me at the gym, but one day I\u2019ll get him to. We haven\u2019t
+    known each other for too long, but we do get along really well. I taught him
+    how to play some League, and though he had no idea what he was doing, it was
+    still pretty fun, as long as we had our chats muted (Seriously, some of you guys
+    need to calm down). "
+  relationship4: "Rachel is pretty cool. I want to go rock climbing with her one
+    day, but our schedules clash a lot. She always goes climbing late at night, when
+    I prefer to work out in the morning. I\u2019d go on my own, but I don\u2019t
+    really like working out alone. Plus, I\u2019ve never been climbing before, and
+    I\u2019m just a littlee bit scared of heights. On another note, I heard she fixes
+    phones and laptops for a cheap cost, so I tried to get my laptop fixed by her
+    once. Apparently it was too full of viruses to even consider repair. Don\u2019t
+    ask how that happened."
+  relationship5: "Skylar and I are pretty different, and yet, I don\u2019t know anyone
+    who understands me more than him. Sometimes we study together, and although I\u2019ve
+    never been good at wordy kinds of subjects, he\u2019s always there to make up
+    for that, and in return, I helped him with Calculus. Sometimes, he and I just
+    end up talking for hours when we should\u2019ve been studying. He\u2019d always
+    struggled with talking to people, though I appreciate he\u2019s always outgoing
+    with me. His voice is calming enough that I feel like I could fall asleep to
+    it. Not in the boring kind of way, but in a very soothing kinda way. He\u2019s
+    read some pages from books he loves and I find myself completely relaxing. Sometimes,
+    he\u2019ll even join me when I hit the gym, even though he hates it there, just
+    because he knows I like the company. "

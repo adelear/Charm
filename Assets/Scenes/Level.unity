@@ -144,6 +144,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &243561179 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6004174857145919303, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+  m_PrefabInstance: {fileID: 3922594798669726600}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &387217606 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7988479101496628193, guid: 533dd63a85c80ed4ea0209dd4c862dd5, type: 3}
@@ -573,6 +584,44 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7999676340363376286, guid: 5d257aeb49660b54f80f2e851cc690c5, type: 3}
   m_PrefabInstance: {fileID: 8928680415671351971}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1396789087 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1139987146099146952, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+  m_PrefabInstance: {fileID: 3922594798669726600}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1396789088 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3692470368186892944, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+  m_PrefabInstance: {fileID: 3922594798669726600}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1396789091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396789087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7994406168aa51245bf8cac6d9a0a018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textComponent: {fileID: 243561179}
+  lines:
+  - Well, well, what have we here?
+  - A cozy ski lodge, friends laughing, stories waiting to unfurl.
+  - Mortals, oblivious to the whims of the divine.
+  - "It's time for a game, a twist of fate. Love, after all, is my playground, and
+    these unsuspecting souls \u2013 my pawns."
+  - "Behold, my enchanted bow \u2013 an instrument of affection."
+  - Watch as I weave the threads of friendship, revealing desires yet unspoken.
+  - For, in the grand cosmic ballet, love is but a dance, and I, the mischievous
+    choreographer.
+  - Join me, mortals, in this whimsical escapade.
+  - Let's turn this ski lodge into a theater of emotions, where the outcome is uncertain,
+    and the game is all too amusing.
+  - After all, what's love without a touch of divine mischief?
+  textSpeed: 0.05
 --- !u!4 &1551405476 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8533000975739609957, guid: 487f159073ac5cf4997fdd6e636951a9, type: 3}
@@ -1186,6 +1235,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6553930565002649406, guid: 4ce57384f5b8ed249996e384f673aff2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1649770207}
+    - targetCorrespondingSourceObject: {fileID: 6553930565002649406, guid: 4ce57384f5b8ed249996e384f673aff2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1396789088}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5332015827219904049, guid: 4ce57384f5b8ed249996e384f673aff2, type: 3}
       insertIndex: -1
@@ -1223,6 +1275,122 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8430136407733703022, guid: e412c11faf2d9a541a1f51e5cd3b902d, type: 3}
   m_PrefabInstance: {fileID: 2525649519882345271}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3922594798669726600
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2890907134743795808}
+    m_Modifications:
+    - target: {fileID: 1139987146099146952, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_Name
+      value: DialogueBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692470368186892944, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692470368186892944, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692470368186892944, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692470368186892944, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692470368186892944, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692470368186892944, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692470368186892944, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692470368186892944, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692470368186892944, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692470368186892944, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692470368186892944, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692470368186892944, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692470368186892944, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692470368186892944, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692470368186892944, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692470368186892944, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692470368186892944, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692470368186892944, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692470368186892944, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692470368186892944, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004174857145919303, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_margin.w
+      value: -132.2161
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004174857145919303, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_margin.z
+      value: -1079.3645
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004174857145919303, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004174857145919303, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1139987146099146952, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1396789091}
+  m_SourcePrefab: {fileID: 100100000, guid: 32fd2d04c358108439864150f4a91e33, type: 3}
 --- !u!1001 &4791805866161469928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1239,6 +1407,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cupid
       objectReference: {fileID: 0}
+    - target: {fileID: 5757264063106949807, guid: 533dd63a85c80ed4ea0209dd4c862dd5, type: 3}
+      propertyPath: characterProfile
+      value: 
+      objectReference: {fileID: 1649770206}
     - target: {fileID: 7988479101496628193, guid: 533dd63a85c80ed4ea0209dd4c862dd5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.97
@@ -1625,6 +1797,10 @@ PrefabInstance:
     - target: {fileID: 6576744256794763010, guid: 5a7f8e1ac0a9fbd4297270c965cabf6f, type: 3}
       propertyPath: m_Name
       value: CharacterProfile
+      objectReference: {fileID: 0}
+    - target: {fileID: 6576744256794763010, guid: 5a7f8e1ac0a9fbd4297270c965cabf6f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6591599788459632117, guid: 5a7f8e1ac0a9fbd4297270c965cabf6f, type: 3}
       propertyPath: m_Name
