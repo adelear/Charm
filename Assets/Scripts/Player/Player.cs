@@ -21,9 +21,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (characterProfile != null || introDialogue !=null || outroDialogue != null || epilogues != null)
+        if (characterProfile != null || introDialogue !=null || outroDialogue != null)
         {
-            if (!characterProfile.activeSelf || !introDialogue.activeSelf || !outroDialogue.activeSelf || !epilogues.activeSelf) 
+            if (!characterProfile.activeSelf || !introDialogue.activeSelf || !outroDialogue.activeSelf) 
             {
                 mx = Input.GetAxisRaw("Horizontal");
                 my = Input.GetAxisRaw("Vertical");
@@ -38,12 +38,21 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Character Profile not set!"); 
         }
-        
-        if (Input.GetKeyDown(KeyCode.E)) LoveSpellManager.Instance.DisplaySpecificCouple();
+
+        if (epilogues.activeSelf)
+        {
+            // Pause the game
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            // Resume the game
+            Time.timeScale = 1f;
+        }
     }
     private void FixedUpdate()
     {
-        if (!characterProfile.activeSelf || !introDialogue.activeSelf || !outroDialogue.activeSelf || !epilogues.activeSelf)
+        if (!characterProfile.activeSelf || !introDialogue.activeSelf)
         {
             rb.velocity = new Vector2(mx, my).normalized * speed;
         }

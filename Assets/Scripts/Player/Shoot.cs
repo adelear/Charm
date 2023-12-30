@@ -6,7 +6,6 @@ public class Shoot : MonoBehaviour
     [SerializeField] GameObject characterProfile;
     [SerializeField] GameObject introDialogue;
     [SerializeField] GameObject outroDialogue;
-    [SerializeField] GameObject epilogues;
     public GameObject projectilePrefab;
     public Transform shootPoint;
     public float shootCooldown = 0.5f;
@@ -21,7 +20,7 @@ public class Shoot : MonoBehaviour
             {
                 if (!introDialogue.activeSelf)
                 {
-                    if (!outroDialogue.activeSelf || !epilogues.activeSelf) Fire();
+                    if (!outroDialogue.activeSelf) Fire();
                 }
             }
         }

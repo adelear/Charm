@@ -24,6 +24,7 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] Button backButton;
     [SerializeField] Button quitButton;
     [SerializeField] Button returnToMenuButton;
+    [SerializeField] Button returnToMenuButton2; 
     [SerializeField] Button resumeGame;
 
     [Header("Menus")]
@@ -105,6 +106,12 @@ public class CanvasManager : MonoBehaviour
             EventTrigger returnToMenuTrigger = returnToMenuButton.gameObject.AddComponent<EventTrigger>();
             AddPointerEnterEvent(returnToMenuTrigger, PlayButtonSound);
             returnToMenuButton.onClick.AddListener(LoadTitle);
+        }
+        if (returnToMenuButton2)
+        {
+            EventTrigger returnToMenuTrigger = returnToMenuButton2.gameObject.AddComponent<EventTrigger>();
+            AddPointerEnterEvent(returnToMenuTrigger, PlayButtonSound);
+            returnToMenuButton2.onClick.AddListener(LoadTitle);
         }
     }
 
