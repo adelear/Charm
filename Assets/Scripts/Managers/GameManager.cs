@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] AudioManager asm; 
     [SerializeField] AudioClip LossSound;
+    [SerializeField] GameObject introDialogue;
 
     public static GameManager Instance { get; private set; }
     public enum GameState
@@ -22,6 +23,19 @@ public class GameManager : MonoBehaviour
 
     public event Action OnGameStateChanged;
 
+    private void Start()
+    {
+        if (currentState == GameState.GAME)
+        {
+            if (introDialogue != null)
+            {
+                //Starting Dialogue
+                introDialogue.SetActive(true);
+                introDialogue.GetComponent<Dialogue>().StartDialogue();
+            }
+        }
+    }
+
     public void Awake()
     {
         if (Instance == null)
@@ -30,23 +44,6 @@ public class GameManager : MonoBehaviour
         if (Instance != this)
             Destroy(gameObject);
     }
-
-    /*
-    public int Score
-    {
-        get => score;
-        set
-        {
-            score = value;
-
-            if (OnScoreValueChanged != null)
-                OnScoreValueChanged.Invoke(score); 
-        }
-    }
-    private int score = 0;
-    public UnityEvent<int> OnScoreValueChanged;
-    */ 
-
     IEnumerator DelayedGameOver(float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -63,7 +60,6 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 SceneManager.LoadScene("MainMenu");
-                //Score = 3;
             }
     }
 

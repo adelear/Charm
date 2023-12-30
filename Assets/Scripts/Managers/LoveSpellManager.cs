@@ -7,19 +7,29 @@ public class LoveSpellManager : MonoBehaviour
     public static LoveSpellManager Instance;
 
     public List<NPCController> npcsUnderLoveSpell = new List<NPCController>();
-    public List<LoveCouple> loveCouples = new List<LoveCouple>(); 
+    public List<LoveCouple> loveCouples = new List<LoveCouple>();
+
+    [SerializeField] Dialogue outroDialogue; 
+
+    public string specificCouple1;
+    public string specificCouple2;
+    public string specificCouple3;
+
+    private List<LoveCouple> chosenCouples = new List<LoveCouple>();
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject); // Keep this object alive between scenes
         }
         else
         {
             Destroy(gameObject);
         }
     }
+
 
     public void AddNPCUnderLoveSpell(NPCController npc)
     {
@@ -41,6 +51,22 @@ public class LoveSpellManager : MonoBehaviour
         {
             LoveCouple couple = new LoveCouple(npc1, npc2);
             loveCouples.Add(couple);
+        }
+        SaveCouplesIntoSpecificVariables(); 
+
+        if (loveCouples.Count == 3)
+        {
+            chosenCouples = loveCouples.ToList(); 
+            AllCouplesFormed(); 
+        }
+    }
+
+    public void AllCouplesFormed()
+    {
+        if (outroDialogue != null)
+        {
+            outroDialogue.gameObject.SetActive(true);
+            outroDialogue.StartDialogue();  
         }
     }
 
@@ -69,9 +95,10 @@ public class LoveSpellManager : MonoBehaviour
         }
     }
 
-    public void DisplaySpecificCouple(int coupleIndex)
+    public void DisplaySpecificCouple()
     {
         // Check if the index is valid
+        /* 
         if (coupleIndex >= 0 && coupleIndex < loveCouples.Count)
         {
             LoveCouple couple = loveCouples[coupleIndex];
@@ -83,5 +110,31 @@ public class LoveSpellManager : MonoBehaviour
         {
             Debug.LogWarning("Invalid couple index: " + coupleIndex);
         }
+        */
+        Debug.Log(specificCouple1); 
+        Debug.Log(specificCouple2);
+        Debug.Log(specificCouple3);
     }
+    public void SaveCouplesIntoSpecificVariables()
+    {
+        if (loveCouples.Count >= 1)
+        {
+            specificCouple1 = $"{loveCouples[0].npc1.GetName()} and {loveCouples[0].npc2.GetName()}";
+        }
+
+        if (loveCouples.Count >= 2)
+        {
+            specificCouple2 = $"{loveCouples[1].npc1.GetName()} and {loveCouples[1].npc2.GetName()}";
+        }
+
+        if (loveCouples.Count >= 3)
+        {
+            specificCouple3 = $"{loveCouples[2].npc1.GetName()} and {loveCouples[2].npc2.GetName()}";
+        }
+    }
+
+    public List<LoveCouple> GetChosenCouples()
+    {
+        return chosenCouples;
+    } 
 }

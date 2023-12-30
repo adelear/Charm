@@ -10,6 +10,9 @@ public class NPCController : MonoBehaviour
     [SerializeField] ProfileManager profileManager;
     [SerializeField] private CharacterData characterData;
     [SerializeField] private GameObject characterProfile;
+    [SerializeField] private GameObject introDialogue;
+    [SerializeField] private GameObject outroDialogue;
+    [SerializeField] private GameObject epilogues; 
 
     [Header("Navigation")]
     public Transform[] waypoints;
@@ -230,21 +233,35 @@ public class NPCController : MonoBehaviour
     {
         if (characterProfile != null && !characterProfile.activeSelf)
         {
-            characterProfile.SetActive(true); 
-            SetCharacterData(characterData);
-            isMouseHovering = true;
-
-            if (profileManager != null)
+            if (introDialogue != null && !introDialogue.activeSelf)
             {
-                profileManager.SetPage(0);
-                profileManager.ShowProfile();
+                if (outroDialogue != null && !outroDialogue.activeSelf)
+                {
+                    if (epilogues != null && !epilogues.activeSelf)
+                    {
+                        characterProfile.SetActive(true);
+                        SetCharacterData(characterData);
+                        isMouseHovering = true;
+
+                        if (profileManager != null)
+                        {
+                            profileManager.SetPage(0);
+                            profileManager.ShowProfile();
+                        }
+                        else
+                        {
+                            Debug.Log("Profile Manager does not exist");
+                        }
+                    }
+                } 
             }
             else
             {
-                Debug.Log("Profile Manager does not exist"); 
+                Debug.Log("Intro Dialogue is active");
             }
-        }  
+        }
     }
+
 
     public string GetName()
     {

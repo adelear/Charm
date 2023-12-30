@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] GameObject characterProfile; 
+    [SerializeField] GameObject characterProfile;
+    [SerializeField] GameObject introDialogue;
+    [SerializeField] GameObject outroDialogue;
+    [SerializeField] GameObject epilogues;
     private Rigidbody2D rb;
     private float speed = 5.0f;
     private float mx;
@@ -18,9 +21,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (characterProfile != null)
+        if (characterProfile != null || introDialogue !=null || outroDialogue != null || epilogues != null)
         {
-            if (!characterProfile.activeSelf)
+            if (!characterProfile.activeSelf || !introDialogue.activeSelf || !outroDialogue.activeSelf || !epilogues.activeSelf) 
             {
                 mx = Input.GetAxisRaw("Horizontal");
                 my = Input.GetAxisRaw("Vertical");
@@ -36,11 +39,11 @@ public class Player : MonoBehaviour
             Debug.Log("Character Profile not set!"); 
         }
         
-        //if (Input.GetKeyDown(KeyCode.E)) LoveSpellManager.Instance.DisplayCouples();
+        if (Input.GetKeyDown(KeyCode.E)) LoveSpellManager.Instance.DisplaySpecificCouple();
     }
     private void FixedUpdate()
     {
-        if (!characterProfile.activeSelf)
+        if (!characterProfile.activeSelf || !introDialogue.activeSelf || !outroDialogue.activeSelf || !epilogues.activeSelf)
         {
             rb.velocity = new Vector2(mx, my).normalized * speed;
         }

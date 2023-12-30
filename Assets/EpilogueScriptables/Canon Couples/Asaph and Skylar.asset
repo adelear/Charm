@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30e61d007dec5394b97dc7ec13696803, type: 3}
+  m_Name: Asaph and Skylar
+  m_EditorClassIdentifier: 
+  coupleName: Asaph and Skylar
+  outcome: "Asaph and Skylar\u2019s first date took place at a Taylor Swift concert.
+    Despite preferring places that are calm and silent, Skylar enjoyed his time there
+    and wouldn\u2019t have it any other way. He found Asaph utterly adorable as he
+    sang his heart out to the lyrics, and found himself breaking out of his own shell
+    as he sang along with him. The two then decided to have a relaxing night out
+    as they sat and watched the stars together, to make up for the loud and lively
+    time they had at the concert. It was a perfect compromise that the two relished
+    in. Asaph and Skyler have been inseparable ever since. "
+  character1: {fileID: 21300000, guid: 2b7ddba014774f848bd775870b7a4374, type: 3}
+  character2: {fileID: 21300000, guid: 42654d7df66f61a4c9f81bf9f15198a2, type: 3}

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30e61d007dec5394b97dc7ec13696803, type: 3}
+  m_Name: Cory and Rachel
+  m_EditorClassIdentifier: 
+  coupleName: Cory and Rachel
+  outcome: "The two went to the aquarium. They didn\u2019t really talk much and spent
+    the majority of their time looking at the fish. They felt a bit awkward since
+    they didn\u2019t know what to talk about."
+  character1: {fileID: 21300000, guid: 2f8602847c88aba49a20cd38fa06ca14, type: 3}
+  character2: {fileID: 21300000, guid: 5483cfb210762e64e948506dcde095e7, type: 3}
