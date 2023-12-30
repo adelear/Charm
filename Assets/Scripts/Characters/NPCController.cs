@@ -16,7 +16,7 @@ public class NPCController : MonoBehaviour
 
     [Header("Navigation")]
     public Transform[] waypoints;
-    public float speed = 2f;
+    private float speed = 1f;
     private int currentWaypointIndex;
     private int direction = 1; // 1 for forward, -1 for backward 
     public bool isWaiting = false; 
@@ -124,6 +124,8 @@ public class NPCController : MonoBehaviour
         while (!isTaken)
         {
             // checking if npc has reached the current target waypoint
+            Debug.Log("Moving");
+
             if (Vector3.Distance(transform.position, waypoints[currentWaypointIndex].position) < 0.1f)
             {
                 isWaiting = true;
@@ -140,9 +142,13 @@ public class NPCController : MonoBehaviour
                 }
             }
 
+            // Move towards the current waypoint
+            transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypointIndex].position, speed * Time.deltaTime);
+
             yield return null;
         }
     }
+
 
     private IEnumerator DelayedSetLovePartner()
     {
@@ -212,18 +218,34 @@ public class NPCController : MonoBehaviour
             Debug.LogWarning("GetTaken: Partner is null or already taken.");
         }
     }
-     
-
-
     private IEnumerator MoveToMidpoint(Vector3 midpoint, NPCController partner)
     {
         float moveSpeed = 2.0f; // Adjust the speed as needed
 
         while (Vector3.Distance(transform.position, midpoint) > 0.1f)
         {
-            // Move towards the midpoint
-            transform.position = Vector3.MoveTowards(transform.position, midpoint, moveSpeed * Time.deltaTime);
-            partner.transform.position = Vector3.MoveTowards(partner.transform.position, midpoint, moveSpeed * Time.deltaTime);
+            // Calculate the direction to the midpoint
+            Vector3 directionToMidpoint = (midpoint - transform.position).normalized;
+
+            // Check for obstacles in the path
+            if (Physics.Raycast(transform.position, directionToMidpoint, out RaycastHit hit, 1.0f))
+            {
+                if (hit.collider.CompareTag("Obstacle"))
+                {
+                    // Calculate a new direction that avoids the obstacle
+                    Vector3 avoidanceDirection = Vector3.Slerp(directionToMidpoint, Vector3.Cross(Vector3.up, hit.normal).normalized, 0.5f);
+
+                    // Move towards the adjusted direction
+                    transform.position = Vector3.MoveTowards(transform.position, transform.position + avoidanceDirection, moveSpeed * Time.deltaTime);
+                    partner.transform.position = Vector3.MoveTowards(partner.transform.position, partner.transform.position - avoidanceDirection, moveSpeed * Time.deltaTime);
+                }
+            }
+            else
+            {
+                // No obstacle, move directly towards the midpoint
+                transform.position = Vector3.MoveTowards(transform.position, transform.position + directionToMidpoint, moveSpeed * Time.deltaTime);
+                partner.transform.position = Vector3.MoveTowards(partner.transform.position, partner.transform.position - directionToMidpoint, moveSpeed * Time.deltaTime);
+            }
 
             yield return null;
         }
@@ -274,6 +296,7 @@ public class NPCController : MonoBehaviour
         if (waypoints.Length > 0)
         {
             currentWaypointIndex = 0;
+            StartCoroutine(MoveToNextWaypoint()); 
         }
         else
         {
@@ -281,7 +304,7 @@ public class NPCController : MonoBehaviour
         }
 
         // Start the movement coroutine
-        //StartCoroutine(MoveToNextWaypoint());
+        StartCoroutine(MoveToNextWaypoint());
         SetCharacterData(characterData);
     }
 

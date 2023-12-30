@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject characterProfile;
     [SerializeField] GameObject introDialogue;
     [SerializeField] GameObject outroDialogue;
-    [SerializeField] GameObject epilogues;
+    [SerializeField] GameObject epilogues; 
     private Rigidbody2D rb;
     private float speed = 5.0f;
     private float mx;

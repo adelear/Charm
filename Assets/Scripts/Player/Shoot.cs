@@ -6,6 +6,8 @@ public class Shoot : MonoBehaviour
     [SerializeField] GameObject characterProfile;
     [SerializeField] GameObject introDialogue;
     [SerializeField] GameObject outroDialogue;
+    [SerializeField] AudioClip shootSound;
+    [SerializeField] AudioManager manager;
     public GameObject projectilePrefab;
     public Transform shootPoint;
     public float shootCooldown = 0.5f;
@@ -31,6 +33,7 @@ public class Shoot : MonoBehaviour
         if (projectilePrefab != null && shootPoint != null)
         {
             GameObject newProjectile = Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
+            manager.PlayOneShot(shootSound, false); 
             StartCoroutine(Cooldown());
         }
     }

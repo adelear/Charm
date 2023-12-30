@@ -11,14 +11,16 @@ public class ProfileManager : MonoBehaviour
 
     [SerializeField] Button backButton;
     [SerializeField] Button nextButton;
+    [SerializeField] AudioClip buttonSound; 
 
+    private AudioManager audioManager;
     private int currentPage = 0;
     public bool resetPage = false; 
 
     private void Start()
     {
         CheckSerializedFields(); 
-
+        audioManager = GetComponent<AudioManager>(); 
         if (backButton)
         {
             backButton.onClick.AddListener(ShowPreviousPage);
@@ -64,6 +66,7 @@ public class ProfileManager : MonoBehaviour
 
     void ShowPreviousPage()
     {
+        audioManager.PlayOneShot(buttonSound, false);
         currentPage--;
         if (currentPage < 0)
             currentPage = relationshipPages.Length;
@@ -72,6 +75,7 @@ public class ProfileManager : MonoBehaviour
 
     void ShowNextPage()
     {
+        audioManager.PlayOneShot(buttonSound, false);
         currentPage++;
         if (currentPage >= relationshipPages.Length + 1)
             currentPage = 0;

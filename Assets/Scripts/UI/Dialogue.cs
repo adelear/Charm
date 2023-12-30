@@ -8,7 +8,10 @@ public class Dialogue : MonoBehaviour
     public TextMeshProUGUI textComponent;
     public string[] lines;
     public float textSpeed = 0.05f;
-    public bool isOutro = false; 
+    public bool isOutro = false;
+    public AudioClip dialogueSound;
+    [SerializeField] AudioManager audioManager; 
+    
 
     private int index;
     private Coroutine typingCoroutine;
@@ -29,11 +32,17 @@ public class Dialogue : MonoBehaviour
     IEnumerator TypeLine()
     {
         textComponent.text = string.Empty; // Clear text before typing
+        bool playSound = false; // Flag to determine whether to play sound for the current letter
         foreach (char c in lines[index].ToCharArray())
         {
+            if (playSound)
+            {
+                audioManager.PlayOneShot(dialogueSound, false); // Play dialogue sound for every other letter
+            }
             textComponent.text += c;
+            playSound = !playSound; // Toggle the flag
             yield return new WaitForSeconds(textSpeed);
-        }
+        } 
     }
 
     void StartTyping()
