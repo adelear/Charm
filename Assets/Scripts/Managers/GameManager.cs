@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
     }
 
+    /*
     public int Score
     {
         get => score;
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
     }
     private int score = 0;
     public UnityEvent<int> OnScoreValueChanged;
+    */ 
 
     IEnumerator DelayedGameOver(float delay)
     {
@@ -61,7 +63,7 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 SceneManager.LoadScene("MainMenu");
-                Score = 3;
+                //Score = 3;
             }
     }
 

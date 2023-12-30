@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4825751823625766584}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5877466879098207462}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 1 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,9 +75,9 @@ GameObject:
   - component: {fileID: 9097225225958410945}
   - component: {fileID: 310036755644432926}
   - component: {fileID: 6849466218248263518}
-  m_Layer: 0
-  m_Name: Sprite
-  m_TagString: Untagged
+  m_Layer: 3
+  m_Name: Skylar
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,7 +139,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.6187736, g: 0.8392157, b: 0.35294122, a: 1}
+  m_Color: {r: 0.35294122, g: 0.4234881, b: 0.8392157, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -176,9 +176,24 @@ MonoBehaviour:
   - {fileID: 8386399625978764000}
   - {fileID: 5166306097176740809}
   speed: 2
+  isWaiting: 0
+  isMouseHovering: 0
   characterName: {fileID: 0}
   characterBackstory: {fileID: 0}
   characterPortrait: {fileID: 0}
+  loveInterest: Asaph
+  character1: {fileID: 0}
+  character2: {fileID: 0}
+  character3: {fileID: 0}
+  character4: {fileID: 0}
+  character5: {fileID: 0}
+  relationship1: {fileID: 0}
+  relationship2: {fileID: 0}
+  relationship3: {fileID: 0}
+  relationship4: {fileID: 0}
+  relationship5: {fileID: 0}
+  inLove: 0
+  isTaken: 0
 --- !u!50 &310036755644432926
 Rigidbody2D:
   serializedVersion: 4
@@ -191,7 +206,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 500
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -260,7 +275,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8430844348657958102}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +306,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2343468463943541512}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +337,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5166306097176740809}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 1 (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +368,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6573315543027365046}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Path
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,7 +410,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4321763975855127933}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 1 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +441,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8386399625978764000}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 1 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -457,7 +472,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8140982265836220092}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 1 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,7 +503,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2335607985334791984}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 1 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +534,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8994925598333639980}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -550,7 +565,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 664915968034929274}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -581,9 +596,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8430136407733703022}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skylar
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

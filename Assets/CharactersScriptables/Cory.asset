@@ -13,5 +13,21 @@ MonoBehaviour:
   m_Name: Cory
   m_EditorClassIdentifier: 
   name: Cory
-  backstory: STINKY WAH WAH 2
+  backstory: "He/Him, an Animation student.  Cory is a calm and level headed individual,
+    who treats those around him with nothing but respect. His smile and his optimistic
+    outlook tends to be contagious. He loves helping people, expecting nothing in
+    return, and has one of the kindest hearts. Cory enjoys video editing, drawing,
+    and photography, and values a quiet space. His favourite food is anything that\u2019s
+    not sushi.  "
+  loveInterest: Alex
   portrait: {fileID: 21300000, guid: 2f8602847c88aba49a20cd38fa06ca14, type: 3}
+  char1: Alex
+  char2: Asaph
+  char3: Autumn
+  char4: Rachel
+  char5: Skylar
+  relationship1: idk
+  relationship2: idk
+  relationship3: idk
+  relationship4: idk
+  relationship5: idk

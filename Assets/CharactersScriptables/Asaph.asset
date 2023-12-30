@@ -16,3 +16,13 @@ MonoBehaviour:
   backstory: STINKY WAH WAH 3
   loveInterest: Skylar
   portrait: {fileID: 21300000, guid: 2b7ddba014774f848bd775870b7a4374, type: 3}
+  char1: Alex
+  char2: Autumn
+  char3: Cory
+  char4: Rachel
+  char5: Skylar
+  relationship1: idk
+  relationship2: idk
+  relationship3: idk
+  relationship4: idk
+  relationship5: idk

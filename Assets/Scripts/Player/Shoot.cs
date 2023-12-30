@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
+    [SerializeField] GameObject characterProfile; 
     public GameObject projectilePrefab;
     public Transform shootPoint;
     public float shootCooldown = 0.5f;
@@ -11,16 +12,22 @@ public class Shoot : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1") && canShoot)
+        if (characterProfile != null)
         {
-            Fire();
+            if (Input.GetButtonDown("Fire1") && canShoot && !characterProfile.activeSelf)
+            {
+                Fire();
+            }
         }
     }
 
     private void Fire()
     {
-        GameObject newProjectile = Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
-        StartCoroutine(Cooldown());
+        if (projectilePrefab != null && shootPoint != null)
+        {
+            GameObject newProjectile = Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
+            StartCoroutine(Cooldown());
+        }
     }
 
     private IEnumerator Cooldown()

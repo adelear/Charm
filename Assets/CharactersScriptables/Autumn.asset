@@ -13,6 +13,57 @@ MonoBehaviour:
   m_Name: Autumn
   m_EditorClassIdentifier: 
   name: Autumn
-  backstory: hehe
+  backstory: "She/Her, an Engineering student.  Autumn is an intelligent and honest
+    individual. She values saying what\u2019s on her mind, and not everyone always
+    appreciates that. Despite that, she is outgoing with her loved ones, and holds
+    them close to her. At first glance, she seems like the type of person who prefers
+    higher end forms of entertainment, but those who really know her know that she\u2019s
+    caught up on most anime.  "
   loveInterest: Rachel
   portrait: {fileID: 21300000, guid: 30860bcafd9a44d40b1298f37156ead1, type: 3}
+  char1: Alex
+  char2: Asaph
+  char3: Rachel
+  char4: Cory
+  char5: Skylar
+  relationship1: "I don\u2019t know much about Alex, rather than the fact that they\u2019ve
+    been friends with Rachel for significantly longer than me. I do think they\u2019re
+    very sweet though, but perhaps a little fragile. I find myself hyperfocused on
+    the words I say around them. I feel like I\u2019ll accidentally say something
+    that comes across as a bit harsh, when I didn\u2019t intend it that way. I made
+    a joke once about a certain show they\u2019re interested in, and it seemed to
+    have upset them. I didn\u2019t realize they had no idea I was also a fan, until
+    I came across them at a convention, where they were utterly shocked at how dedicated
+    I was with my cosplay. We had a nice time wandering around, and I\u2019m glad
+    I was able to show them the real me then. "
+  relationship2: "I\u2019m not sure how to feel about Asaph. He is a tad intimidating,
+    but I don\u2019t think we\u2019ve talked enough for me to form a proper opinion
+    on him. I was rather shocked when he shuffled close to me once while we were
+    on a bus to hum along to a KPOP song I was listening to. I never thought he\u2019d
+    be the type to own BTS merch, but that\u2019s what he told me during that bus
+    ride as he gushed to me about his bias. I guess after that occurrence, he wasn\u2019t
+    as scary as I initially thought. "
+  relationship3: "Rachel can only be described as a free spirited and spontaneous
+    individual. Which means she ends up hurting herself every now and then. As much
+    as she likes to joke, I know that Rachel is incredibly emotional and has the
+    biggest heart out of everyone I know. She gave me one of her favourite books
+    once, and it was annotated with the most thorough thoughts. She also constantly
+    thinks about others\u2019 feelings, and I just wish she\u2019d prioritize herself
+    more. Nevertheless, it\u2019s really nice to know she\u2019ll always listen to
+    what I have to say. I feel like I bore people whenever I talk, but I\u2019ve
+    never felt that way with her. Even then, she always reciprocates my enthusiasm."
+  relationship4: "Cory is the absolute kindest guy I\u2019ve ever met. He\u2019s
+    quite literally the perfect example of the men from period dramas, who have such
+    gentleman-like characteristics. The one time I tried to explain this to him as
+    well, he simply nodded along and agreed. He probably had no idea what I was talking
+    about, but I appreciate that he went along with it anyways. Cory and I probably
+    share the same distaste for so many kinds of food. We both dislike sushi, sweets,
+    and \u201Cpeasant\u201D foods like McDonalds. Overall, this man has good taste. "
+  relationship5: "Skylar is an intelligent guy. He\u2019s one of the only people
+    I recall who\u2019s read and shares the same interests in the same kind of books
+    as me. We have this cute little tradition where we trade books every now and
+    then and discuss our thoughts on them. Sometimes, we can just sit and relax in
+    a library, either reading away, or sharing our thoughts for hours. We went to
+    the same high school, so we often lended a hand to one another when we were stuck
+    on certain topics, so it's reassuring to know he'll support me. He\u2019s also
+    probably one of the only guys I know as well who has a good sense in fashion. "

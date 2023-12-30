@@ -368,7 +368,7 @@ GameObject:
   - component: {fileID: 6480894199955346627}
   - component: {fileID: 6018847822436032214}
   m_Layer: 3
-  m_Name: Sprite
+  m_Name: Alex
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -468,9 +468,22 @@ MonoBehaviour:
   - {fileID: 1261164887927671253}
   - {fileID: 3986313737607908711}
   speed: 2
+  isWaiting: 0
+  isMouseHovering: 0
   characterName: {fileID: 0}
   characterBackstory: {fileID: 0}
   characterPortrait: {fileID: 0}
+  loveInterest: Cory
+  character1: {fileID: 0}
+  character2: {fileID: 0}
+  character3: {fileID: 0}
+  character4: {fileID: 0}
+  character5: {fileID: 0}
+  relationship1: {fileID: 0}
+  relationship2: {fileID: 0}
+  relationship3: {fileID: 0}
+  relationship4: {fileID: 0}
+  relationship5: {fileID: 0}
   inLove: 0
   isTaken: 0
 --- !u!50 &6480894199955346627
@@ -485,7 +498,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 500
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0

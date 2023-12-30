@@ -7,6 +7,7 @@ using System.Linq;
 
 public class NPCController : MonoBehaviour
 {
+    [SerializeField] ProfileManager profileManager;
     [SerializeField] private CharacterData characterData;
     [SerializeField] private GameObject characterProfile;
 
@@ -15,20 +16,58 @@ public class NPCController : MonoBehaviour
     public float speed = 2f;
     private int currentWaypointIndex;
     private int direction = 1; // 1 for forward, -1 for backward 
-    private bool isWaiting = false; 
-    private bool isMouseHovering = false;
+    public bool isWaiting = false; 
+    public bool isMouseHovering = false;
 
-    [Header("UI Elements")]
+    [Header("Character Profile Elements")]
     public TMP_Text characterName;
     public TMP_Text characterBackstory;
     public Image characterPortrait;
+    public string loveInterest; 
+
+    [Header("Relationship Profile Elements")]
+    public TMP_Text character1;
+    public TMP_Text character2;
+    public TMP_Text character3;
+    public TMP_Text character4;
+    public TMP_Text character5;
+
+    public TMP_Text relationship1;
+    public TMP_Text relationship2;
+    public TMP_Text relationship3;
+    public TMP_Text relationship4;
+    public TMP_Text relationship5;
 
     [Header("Love Spell")]
     public bool inLove = false;
     public bool isTaken = false;
-    private NPCController lovePartner; 
+    private NPCController lovePartner;
 
+    private void Awake()
+    {
+        CheckReferences();
+    }
 
+    private void CheckReferences()
+    {
+        if (profileManager == null)
+        {
+            if (profileManager == null)
+            {
+                Debug.LogError("ProfileManager is not assigned on " + gameObject.name);
+            }
+
+            if (characterData == null)
+            {
+                Debug.LogError("CharacterData is not assigned on " + gameObject.name);
+            }
+
+            if (characterProfile == null)
+            {
+                Debug.LogError("CharacterProfile is not assigned on " + gameObject.name);
+            }
+        }
+    }
     public void SetCharacterData(CharacterData data)
     {
         if (data != null)
@@ -36,20 +75,45 @@ public class NPCController : MonoBehaviour
             characterName.text = data.name;
             characterBackstory.text = data.backstory;
             characterPortrait.sprite = data.portrait;
+            loveInterest = data.loveInterest;
+
+            character1.text = "Regarding " + data.char1;
+            character2.text = "Regarding " + data.char2; 
+            character3.text = "Regarding " + data.char3;
+            character4.text = "Regarding " + data.char4;
+            character5.text = "Regarding " + data.char5;
+
+            relationship1.text = data.relationship1;
+            relationship2.text = data.relationship2;
+            relationship3.text = data.relationship3;
+            relationship4.text = data.relationship4;
+            relationship5.text = data.relationship5;
         }
         else
         {
             Debug.LogError("CharacterData is null. Make sure to assign it in the Unity Editor.");
         }
-        UpdateCharacterDisplay(); 
+        UpdateDisplay(); 
     }
 
-    private void UpdateCharacterDisplay()
+    private void UpdateDisplay()
     {
         characterName.text = characterData.name;
         characterBackstory.text = characterData.backstory;
-        characterPortrait.sprite = characterData.portrait; 
+        characterPortrait.sprite = characterData.portrait;
+        loveInterest = characterData.loveInterest;
 
+        character1.text = "Regarding " + characterData.char1;
+        character2.text = "Regarding " + characterData.char2;
+        character3.text = "Regarding " + characterData.char3;
+        character4.text = "Regarding " + characterData.char4;
+        character5.text = "Regarding " + characterData.char5;
+
+        relationship1.text = characterData.relationship1;
+        relationship2.text = characterData.relationship2;
+        relationship3.text = characterData.relationship3;
+        relationship4.text = characterData.relationship4;
+        relationship5.text = characterData.relationship5;
     }
 
     IEnumerator MoveToNextWaypoint()
@@ -169,6 +233,16 @@ public class NPCController : MonoBehaviour
             characterProfile.SetActive(true); 
             SetCharacterData(characterData);
             isMouseHovering = true;
+
+            if (profileManager != null)
+            {
+                profileManager.SetPage(0);
+                profileManager.ShowProfile();
+            }
+            else
+            {
+                Debug.Log("Profile Manager does not exist"); 
+            }
         }  
     }
 
@@ -179,6 +253,7 @@ public class NPCController : MonoBehaviour
 
     private void Start()
     {
+        CheckReferences(); 
         if (waypoints.Length > 0)
         {
             currentWaypointIndex = 0;

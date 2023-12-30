@@ -13,6 +13,62 @@ MonoBehaviour:
   m_Name: Alex
   m_EditorClassIdentifier: 
   name: Alex
-  backstory: 'STINKY WAH WAH '
-  loveInterest: Clay
+  backstory: "They/Them, an Animation student.  Enjoys anime, and drawing, and uses
+    them as inspiration to create their own stories. Rarely ever gets more than 5
+    hours of sleep, due to staying up late playing farming games at night. Their
+    favourite food is anything from McDonald\u2019s, but loves Happy Meals the most.
+    Alex is a calm and kindhearted individual, who many of their friends wholeheartedly
+    appreciate.  "
+  loveInterest: Cory
   portrait: {fileID: 21300000, guid: 393c7c6443df5f04cba7041baf4725ea, type: 3}
+  char1: Cory
+  char2: Rachel
+  char3: Autumn
+  char4: Asaph
+  char5: Skylar
+  relationship1: "Cory\u2019s the sweetest guy I\u2019ve ever met, and anyone who
+    knows him will agree on that. Sometimes we end up talking til it\u2019s 4AM,
+    and realize the time when it\u2019s too late. I feel like I\u2019m usually the
+    one who listens when it comes to conversations, but I find that I can talk about
+    nothing and everything all at once and he\u2019ll listen to it all. Apparently
+    my friend has known him for years, and I\u2019m shocked how it took us so long
+    to meet, and yet, we got so close so fast. I\u2019m not really a social butterfly,
+    and meeting new people can be scary for me, but Cory made it seem like a breeze.
+    Asides from Rachel, he\u2019s probably my closest friend. "
+  relationship2: "Rachel is a unique friend. By unique, I don\u2019t know anyone
+    else who would randomly send you selfies of them with a nosebleed. She\u2019s
+    the kind of friend who is either dying or getting injured every other day. Last
+    month, she got a concussion from rock climbing. Nevertheless, I can always count
+    on Rachel to be by my side. We met in ninth grade, and ever since then, we were
+    rarely apart. We used to be on calls together every day, but ever since she\u2019d
+    gotten so busy with her classes, we don\u2019t do that as often. We\u2019re still
+    as close as ever, but I just wish we weren\u2019t growing up so fast and losing
+    more time to hang out. Every time we do see each other though, she always bugs
+    me about the book I borrowed a while back. By that way, I returned that book
+    3 years ago!"
+  relationship3: "Autumn is a bit of an intense person. She\u2019s really smart and
+    makes that all too clear in the way she talks. I\u2019ve seen her in debate meets
+    since my sister used to do that, and she really does have a way with words. I
+    always believed she was the type of girl who would prefer live action shows,
+    dramas, maybe even prefer books rather than animated stuff, until the day I saw
+    her at an anime convention. And she was in cosplay. Handmade. We talked briefly,
+    and even walked around together. At the end, she bought a sword at the con. A
+    sword. That just makes her all the more cooler and admirable.  "
+  relationship4: "Asaph is a close family friend of mine and we usually spend our
+    holidays together with our families. I\u2019ve never seen someone so passionate
+    while singing Celine Dion songs during karaoke. I always get upset when I hear
+    people talk about his appearance, or are afraid of him. He always has a scowl
+    on his face, but he\u2019s one of the kindest guys anyone could ever meet. Plus,
+    if they knew how obsessed he is with Taylor Swift, they\u2019d take it all back.
+    One time, he tried to get us tickets to see her, but he was never able to land
+    one. Little does he know, I\u2019m actually surprising him on Christmas with
+    two seats for her show next month! I really only got them since my dad has a
+    friend who has a friend who gave them for free. I\u2019m not a concert kinda
+    person, but it\u2019d be cool to see just once what it\u2019s like. "
+  relationship5: "I don\u2019t really know much about Skylar. He\u2019s a nice guy,
+    and apparently he plays the same games and watches the same shows as me, but
+    he doesn\u2019t really talk much. Sometimes, when I join in on conversations
+    with him and Asaph, he ends up getting quiet. I get like that too when people
+    I\u2019m not familiar with do the same, so I can\u2019t really blame him. He
+    has a really cool sense of fashion though. I really hope I can get to know more
+    about him, because from what I\u2019ve heard, he and I have a lot in common. "

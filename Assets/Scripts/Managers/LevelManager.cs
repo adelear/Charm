@@ -5,7 +5,6 @@ using static GameManager;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }  
-    private float currentTime = 0;
 
     private void Awake()
     {

@@ -49,39 +49,45 @@ public class SceneTransitionManager : MonoBehaviour
 
     private IEnumerator FadeIn(string sceneName)
     {
-        float timeElapsed = 0.0f;
-        while (timeElapsed <= fadeDuration)
+        if (fadeImg != null)
         {
-            timeElapsed += Time.unscaledDeltaTime;
-            fadeImg.alpha = Mathf.Lerp(0.0f, 1.0f, timeElapsed / fadeDuration);
+            float timeElapsed = 0.0f;
+            while (timeElapsed <= fadeDuration)
+            {
+                timeElapsed += Time.unscaledDeltaTime;
+                fadeImg.alpha = Mathf.Lerp(0.0f, 1.0f, timeElapsed / fadeDuration);
+                yield return null;
+            }
+
+            fadeImg.alpha = 1.0f;
             yield return null;
         }
-
-        fadeImg.alpha = 1.0f;
-        yield return null;
 
         SceneManager.LoadScene(sceneName);
     }
 
     private IEnumerator FadeOut()
     {
-        isTransitioning = true;
-
-        float timeElapsed = 0.0f;
-
-        fadeImg.alpha = 1.0f;
-
-        while (timeElapsed <= fadeDuration)
+        if (fadeImg != null)
         {
+            isTransitioning = true;
 
-            fadeImg.alpha = Mathf.Lerp(1.0f, 0.0f, timeElapsed / fadeDuration);
-            timeElapsed += Time.unscaledDeltaTime;
-            yield return null;
+            float timeElapsed = 0.0f;
+
+            fadeImg.alpha = 1.0f;
+
+            while (timeElapsed <= fadeDuration)
+            {
+
+                fadeImg.alpha = Mathf.Lerp(1.0f, 0.0f, timeElapsed / fadeDuration);
+                timeElapsed += Time.unscaledDeltaTime;
+                yield return null;
+            }
+
+            fadeImg.alpha = 0.0f;
+
+            isTransitioning = false;
         }
-
-        fadeImg.alpha = 0.0f;
-
-        isTransitioning = false;
     }
 
 
