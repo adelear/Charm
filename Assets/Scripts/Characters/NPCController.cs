@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+using Unity.VisualScripting;
+using Unity.Burst.CompilerServices;
+using static System.Net.WebRequestMethods;
 
 public class NPCController : MonoBehaviour
 {
@@ -45,12 +48,13 @@ public class NPCController : MonoBehaviour
     public bool inLove = false;
     public bool isTaken = false;
     private NPCController lovePartner;
-    private bool isCoroutineRunning = false;
     private Coroutine movementCoroutine;
 
     [Header("Interaction Buttons")]
     public GameObject interactButton; 
     public TMP_Text nameForButton; 
+
+    private SpriteRenderer spriteRenderer; 
 
     private void Awake()
     {
@@ -129,18 +133,6 @@ public class NPCController : MonoBehaviour
     {
         while (!isTaken)
         {
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.5f);
-            foreach (var collider in hitColliders)
-            {
-                if (collider.CompareTag("NPC"))
-                {
-                    // If there is a collision with another NPC, change direction
-                    direction *= -1;
-                    currentWaypointIndex += direction;
-                    break;
-                }
-            }
-
             if (GameManager.Instance.GetGameState() != GameManager.GameState.PAUSE)
             {
                 // checking if npc has reached the current target waypoint 
@@ -159,7 +151,6 @@ public class NPCController : MonoBehaviour
                         currentWaypointIndex = Mathf.Clamp(currentWaypointIndex, 0, waypoints.Length - 1);
                     }
                 }
-
                 // Move towards the current waypoint
                 transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypointIndex].position, speed * Time.deltaTime);
 
@@ -284,7 +275,7 @@ public class NPCController : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, transform.position + directionToMidpoint, speed * Time.deltaTime);
                 partner.transform.position = Vector3.MoveTowards(partner.transform.position, partner.transform.position - directionToMidpoint, speed * Time.deltaTime);
 
-                Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.5f);
+                Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
                 foreach (var collider in hitColliders)
                 {
                     if (collider.gameObject == partner.gameObject)
@@ -292,7 +283,8 @@ public class NPCController : MonoBehaviour
                         partner.speed = 0f;
                         speed = 0f;
                     }
-                }
+                } 
+
             }
 
             yield return null;
@@ -392,12 +384,12 @@ public class NPCController : MonoBehaviour
 
     private void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>(); 
         CheckReferences(); 
         if (waypoints.Length > 0)
         {
             currentWaypointIndex = 0;
             StartCoroutine(MoveToNextWaypoint());
-            isCoroutineRunning = true; 
         }
         else
         {
@@ -416,7 +408,7 @@ public class NPCController : MonoBehaviour
             SetLovePartner();
         }
 
-        if (GameManager.Instance.GetGameState() == GameManager.GameState.PAUSE || isMouseHovering)
+        if (GameManager.Instance.GetGameState() == GameManager.GameState.PAUSE || isMouseHovering) 
         {
             StopMovementCoroutine();
         }
@@ -433,6 +425,41 @@ public class NPCController : MonoBehaviour
             {
                 ShowProfile(); 
             }
-        } 
+        }
+
+        // IF another npc above, spriterenderer is on layer 6
+        // if another npc is below them, spriterenderer on layer 5
+
+        RaycastHit2D hitUp;
+        RaycastHit2D hitDown;
+
+        int npcLayerMask = LayerMask.GetMask("NPCLayer");
+        float hitRadius = 3f;
+
+        hitUp = Physics2D.CircleCast(transform.position, hitRadius, transform.up, 0f, npcLayerMask);
+        hitDown = Physics2D.CircleCast(transform.position, hitRadius, -transform.up, 0f, npcLayerMask);
+
+        bool isAbove = (hitUp.collider != null && hitUp.collider.CompareTag("NPC") && hitUp.collider.gameObject != gameObject) || (hitUp.collider != null && hitUp.collider.CompareTag("Player"));
+        bool isBelow = hitDown.collider != null && hitDown.collider.CompareTag("NPC") && hitDown.collider.gameObject != gameObject || (hitDown.collider != null && hitDown.collider.CompareTag("Player"));
+
+
+        Debug.DrawRay(transform.position, Vector2.up * hitRadius, Color.red);  // Debug line for the up ray
+        Debug.DrawRay(transform.position, Vector2.down * hitRadius, Color.blue);  // Debug line for the down ray
+
+        if (isAbove)
+        {
+            Debug.Log(hitUp.collider.gameObject.name + " Is above " + gameObject.name);
+            if (spriteRenderer != null) spriteRenderer.sortingOrder = 6;
+            SpriteRenderer otherSpriteRenderer1 = hitUp.collider.GetComponent<SpriteRenderer>();
+            if (otherSpriteRenderer1 != null) otherSpriteRenderer1.sortingOrder = 5;
+        }
+        else if (isBelow)
+        {
+            Debug.Log(hitDown.collider.gameObject.name + " Is below " + gameObject.name);
+            if (spriteRenderer != null) spriteRenderer.sortingOrder = 4;
+            SpriteRenderer otherSpriteRenderer = hitDown.collider.GetComponent<SpriteRenderer>();
+            if (otherSpriteRenderer != null) otherSpriteRenderer.sortingOrder = 5;
+        }
+
     }
 }

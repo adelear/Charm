@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -14,6 +15,7 @@ public class Projectile : MonoBehaviour
             {
                 Debug.Log(npc.gameObject.name + " shot by Love Arrow");
                 npc.FallUnderLoveSpell();
+                Destroy(gameObject); 
             }
         }
 
@@ -36,7 +38,17 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
+        if (collision.gameObject.CompareTag("NPC"))
+        {
+            NPCController npc = collision.gameObject.GetComponent<NPCController>();
+            if (npc != null && !npc.inLove)
+            {
+                Debug.Log(npc.gameObject.name + " shot by Love Arrow");
+                npc.FallUnderLoveSpell();
+                Destroy(gameObject); 
+            }
+        }
+        
     }
 }
 

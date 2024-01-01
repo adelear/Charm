@@ -7,7 +7,10 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject characterProfile;
     [SerializeField] GameObject introDialogue;
     [SerializeField] GameObject outroDialogue;
-    [SerializeField] GameObject epilogues; 
+    [SerializeField] GameObject epilogues;
+    [SerializeField] GameObject bowPivot;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    private SpriteRenderer bowSprite; 
     private Rigidbody2D rb;
     private float speed = 5.0f;
     private float mx;
@@ -15,7 +18,12 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); 
+        rb = GetComponent<Rigidbody2D>();
+        bowSprite = bowPivot.GetComponent<SpriteRenderer>(); 
+        if (bowPivot == null)
+        {
+            Debug.LogError("Gun Pivot not set!");
+        } 
     }
 
     // Update is called once per frame
@@ -73,6 +81,20 @@ public class Player : MonoBehaviour
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 lookDirection = mousePosition - transform.position;
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
-        rb.rotation = angle;
+
+        if (mousePosition.x < transform.position.x)
+        {
+            // If the mouse is on the left half, flip the SpriteRenderer
+            spriteRenderer.flipX = true;
+            bowSprite.flipY = true;
+        }
+        else
+        {
+            // If the mouse is on the right half, reset the SpriteRenderer flip
+            spriteRenderer.flipX = false;
+            bowSprite.flipY = true;
+        }
+
+        bowPivot.transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 }

@@ -22,7 +22,10 @@ public class Shoot : MonoBehaviour
             {
                 if (!introDialogue.activeSelf)
                 {
-                    if (!outroDialogue.activeSelf) Fire();
+                    if (!outroDialogue.activeSelf)
+                    {
+                        if( GameManager.Instance.GetGameState() != GameManager.GameState.PAUSE) Fire();
+                    }
                 }
             }
         }
