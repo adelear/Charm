@@ -15,7 +15,9 @@ public class NPCController : MonoBehaviour
     [SerializeField] private GameObject characterProfile;
     [SerializeField] private GameObject introDialogue;
     [SerializeField] private GameObject outroDialogue;
-    [SerializeField] private GameObject epilogues; 
+    [SerializeField] private GameObject epilogues;
+    [SerializeField] private GameObject hearts; 
+    
 
     [Header("Navigation")]
     public Transform[] waypoints;
@@ -149,6 +151,7 @@ public class NPCController : MonoBehaviour
                     {
                         direction *= -1;
                         currentWaypointIndex = Mathf.Clamp(currentWaypointIndex, 0, waypoints.Length - 1);
+                        spriteRenderer.flipX = !spriteRenderer.flipX; 
                     }
                 }
                 // Move towards the current waypoint
@@ -193,6 +196,7 @@ public class NPCController : MonoBehaviour
         {
             inLove = true;
             // Play Love spell VFX 
+            hearts.SetActive(true); 
             // Play Love spell SFX
 
             // Add this NPC to the list of NPCs under the love spell
@@ -434,10 +438,11 @@ public class NPCController : MonoBehaviour
         RaycastHit2D hitDown;
 
         int npcLayerMask = LayerMask.GetMask("NPCLayer");
-        float hitRadius = 3f;
+        float hitRadius = 2f;
+        float hitdistance = 2f; 
 
-        hitUp = Physics2D.CircleCast(transform.position, hitRadius, transform.up, 0f, npcLayerMask);
-        hitDown = Physics2D.CircleCast(transform.position, hitRadius, -transform.up, 0f, npcLayerMask);
+        hitUp = Physics2D.CircleCast(transform.position, hitRadius, transform.up, hitdistance, npcLayerMask);
+        hitDown = Physics2D.CircleCast(transform.position, hitRadius, -transform.up, hitdistance, npcLayerMask);
 
         bool isAbove = (hitUp.collider != null && hitUp.collider.CompareTag("NPC") && hitUp.collider.gameObject != gameObject) || (hitUp.collider != null && hitUp.collider.CompareTag("Player"));
         bool isBelow = hitDown.collider != null && hitDown.collider.CompareTag("NPC") && hitDown.collider.gameObject != gameObject || (hitDown.collider != null && hitDown.collider.CompareTag("Player"));
@@ -446,19 +451,31 @@ public class NPCController : MonoBehaviour
         Debug.DrawRay(transform.position, Vector2.up * hitRadius, Color.red);  // Debug line for the up ray
         Debug.DrawRay(transform.position, Vector2.down * hitRadius, Color.blue);  // Debug line for the down ray
 
-        if (isAbove)
+        if (isAbove && isBelow)
         {
-            Debug.Log(hitUp.collider.gameObject.name + " Is above " + gameObject.name);
+            //Debug.Log(hitUp.collider.gameObject.name + " Is above " + gameObject.name);
+            if (spriteRenderer != null) spriteRenderer.sortingOrder = 5;
+            SpriteRenderer otherSpriteRenderer1 = hitUp.collider.GetComponent<SpriteRenderer>();
+            if (otherSpriteRenderer1 != null) otherSpriteRenderer1.sortingOrder = 4;
+
+            //Debug.Log(hitDown.collider.gameObject.name + " Is below " + gameObject.name);
+            SpriteRenderer otherSpriteRenderer2 = hitDown.collider.GetComponent<SpriteRenderer>();
+            if (otherSpriteRenderer2 != null) otherSpriteRenderer2.sortingOrder = 6;
+        }
+
+        else if (isAbove)
+        {
+            //Debug.Log(hitUp.collider.gameObject.name + " Is above " + gameObject.name);
             if (spriteRenderer != null) spriteRenderer.sortingOrder = 6;
             SpriteRenderer otherSpriteRenderer1 = hitUp.collider.GetComponent<SpriteRenderer>();
-            if (otherSpriteRenderer1 != null) otherSpriteRenderer1.sortingOrder = 5;
+            if (otherSpriteRenderer1 != null) otherSpriteRenderer1.sortingOrder = 4;
         }
         else if (isBelow)
         {
-            Debug.Log(hitDown.collider.gameObject.name + " Is below " + gameObject.name);
+            //Debug.Log(hitDown.collider.gameObject.name + " Is below " + gameObject.name); 
             if (spriteRenderer != null) spriteRenderer.sortingOrder = 4;
             SpriteRenderer otherSpriteRenderer = hitDown.collider.GetComponent<SpriteRenderer>();
-            if (otherSpriteRenderer != null) otherSpriteRenderer.sortingOrder = 5;
+            if (otherSpriteRenderer != null) otherSpriteRenderer.sortingOrder = 6;
         }
 
     }
