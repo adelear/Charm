@@ -45,6 +45,12 @@ public class NPCController : MonoBehaviour
     public bool inLove = false;
     public bool isTaken = false;
     private NPCController lovePartner;
+    private bool isCoroutineRunning = false;
+    private Coroutine movementCoroutine;
+
+    [Header("Interaction Buttons")]
+    public GameObject interactButton; 
+    public TMP_Text nameForButton; 
 
     private void Awake()
     {
@@ -123,31 +129,47 @@ public class NPCController : MonoBehaviour
     {
         while (!isTaken)
         {
-            // checking if npc has reached the current target waypoint
-            Debug.Log("Moving");
-
-            if (Vector3.Distance(transform.position, waypoints[currentWaypointIndex].position) < 0.1f)
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.5f);
+            foreach (var collider in hitColliders)
             {
-                isWaiting = true;
-                yield return new WaitForSeconds(2.0f);
-                // After waiting, move to the next waypoint
-                isWaiting = false;
-                currentWaypointIndex += direction;
-
-                // checking if npc has reached the last or first waypoint, then change direction
-                if (currentWaypointIndex >= waypoints.Length || currentWaypointIndex < 0)
+                if (collider.CompareTag("NPC"))
                 {
+                    // If there is a collision with another NPC, change direction
                     direction *= -1;
-                    currentWaypointIndex = Mathf.Clamp(currentWaypointIndex, 0, waypoints.Length - 1);
+                    currentWaypointIndex += direction;
+                    break;
                 }
             }
 
-            // Move towards the current waypoint
-            transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypointIndex].position, speed * Time.deltaTime);
+            if (GameManager.Instance.GetGameState() != GameManager.GameState.PAUSE)
+            {
+                // checking if npc has reached the current target waypoint 
+                if (Vector3.Distance(transform.position, waypoints[currentWaypointIndex].position) < 0.1f)
+                {
+                    isWaiting = true;
+                    yield return new WaitForSeconds(2.0f);
+                    // After waiting, move to the next waypoint
+                    isWaiting = false;
+                    currentWaypointIndex += direction;
+
+                    // checking if npc has reached the last or first waypoint, then change direction
+                    if (currentWaypointIndex >= waypoints.Length || currentWaypointIndex < 0)
+                    {
+                        direction *= -1;
+                        currentWaypointIndex = Mathf.Clamp(currentWaypointIndex, 0, waypoints.Length - 1);
+                    }
+                }
+
+                // Move towards the current waypoint
+                transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypointIndex].position, speed * Time.deltaTime);
+
+                
+            }
 
             yield return null;
         }
-    }
+    } 
+
 
 
     private IEnumerator DelayedSetLovePartner()
@@ -220,7 +242,11 @@ public class NPCController : MonoBehaviour
     }
     private IEnumerator MoveToMidpoint(Vector3 midpoint, NPCController partner)
     {
-        float moveSpeed = 2.0f; // Adjust the speed as needed
+        StopMovementCoroutine();
+        float speed = 1.0f; // Adjust the speed as needed
+        float collisionCooldown = 2.0f; // Adjust the cooldown duration as needed
+
+        float timeSinceLastCollision = 0f;
 
         while (Vector3.Distance(transform.position, midpoint) > 0.1f)
         {
@@ -230,29 +256,86 @@ public class NPCController : MonoBehaviour
             // Check for obstacles in the path
             if (Physics.Raycast(transform.position, directionToMidpoint, out RaycastHit hit, 1.0f))
             {
-                if (hit.collider.CompareTag("Obstacle"))
+                if ((hit.collider.CompareTag("Obstacle") || hit.collider.CompareTag("NPC")) && hit.collider.gameObject != partner.gameObject)
                 {
-                    // Calculate a new direction that avoids the obstacle
-                    Vector3 avoidanceDirection = Vector3.Slerp(directionToMidpoint, Vector3.Cross(Vector3.up, hit.normal).normalized, 0.5f);
+                    // Check if enough time has passed since the last collision
+                    if (Time.time - timeSinceLastCollision > collisionCooldown)
+                    {
+                        // Calculate a new direction that avoids the obstacle
+                        Vector3 avoidanceDirection = Vector3.Slerp(directionToMidpoint, Vector3.Cross(Vector3.up, hit.normal).normalized, 0.5f);
 
-                    // Move towards the adjusted direction
-                    transform.position = Vector3.MoveTowards(transform.position, transform.position + avoidanceDirection, moveSpeed * Time.deltaTime);
-                    partner.transform.position = Vector3.MoveTowards(partner.transform.position, partner.transform.position - avoidanceDirection, moveSpeed * Time.deltaTime);
+                        // Move towards the adjusted direction
+                        transform.position = Vector3.MoveTowards(transform.position, transform.position + avoidanceDirection, speed * Time.deltaTime);
+                        partner.transform.position = Vector3.MoveTowards(partner.transform.position, partner.transform.position - avoidanceDirection, speed * Time.deltaTime);
+
+                        // Update the time of the last collision
+                        timeSinceLastCollision = Time.time;
+                    }
+                }
+                else if (hit.collider.gameObject == partner.gameObject)
+                {
+                    speed = 0f; 
+                    partner.speed = 0f; 
                 }
             }
             else
             {
                 // No obstacle, move directly towards the midpoint
-                transform.position = Vector3.MoveTowards(transform.position, transform.position + directionToMidpoint, moveSpeed * Time.deltaTime);
-                partner.transform.position = Vector3.MoveTowards(partner.transform.position, partner.transform.position - directionToMidpoint, moveSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, transform.position + directionToMidpoint, speed * Time.deltaTime);
+                partner.transform.position = Vector3.MoveTowards(partner.transform.position, partner.transform.position - directionToMidpoint, speed * Time.deltaTime);
+
+                Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.5f);
+                foreach (var collider in hitColliders)
+                {
+                    if (collider.gameObject == partner.gameObject)
+                    {
+                        partner.speed = 0f;
+                        speed = 0f;
+                    }
+                }
             }
 
             yield return null;
         }
     }
 
+
     private void OnMouseEnter()
     {
+        isMouseHovering = true;
+        speed = 0; 
+        StopMovementCoroutine();
+        if (interactButton != null)
+        {
+            if (characterProfile != null && !characterProfile.activeSelf)
+            {
+                if (introDialogue != null && !introDialogue.activeSelf)
+                {
+                    if (outroDialogue != null && !outroDialogue.activeSelf)
+                    {
+                        if (epilogues != null && !epilogues.activeSelf)
+                        {
+                            interactButton.SetActive(true);
+                            nameForButton.text = "Press E to observe " + characterData.name;
+                        }
+                    }
+                }
+            }
+            
+        } 
+    }
+
+    private void OnMouseExit()
+    {
+        isMouseHovering = false;
+        speed = 1; 
+        StartMovementCoroutine(); 
+        interactButton.SetActive(false);
+    }
+
+    private void ShowProfile()
+    {
+        interactButton.SetActive(false); 
         if (characterProfile != null && !characterProfile.activeSelf)
         {
             if (introDialogue != null && !introDialogue.activeSelf)
@@ -263,7 +346,6 @@ public class NPCController : MonoBehaviour
                     {
                         characterProfile.SetActive(true);
                         SetCharacterData(characterData);
-                        isMouseHovering = true;
 
                         if (profileManager != null)
                         {
@@ -275,12 +357,30 @@ public class NPCController : MonoBehaviour
                             Debug.Log("Profile Manager does not exist");
                         }
                     }
-                } 
+                }
             }
             else
             {
                 Debug.Log("Intro Dialogue is active");
             }
+        }
+    }
+    private void StartMovementCoroutine()
+    {
+        if (movementCoroutine == null)
+        {
+            // Start the movement coroutine if it's not already running
+            movementCoroutine = StartCoroutine(MoveToNextWaypoint());
+        }
+    }
+
+    private void StopMovementCoroutine()
+    {
+        if (movementCoroutine != null)
+        {
+            // Stop the movement coroutine if it's running
+            StopCoroutine(movementCoroutine);
+            movementCoroutine = null;
         }
     }
 
@@ -296,34 +396,43 @@ public class NPCController : MonoBehaviour
         if (waypoints.Length > 0)
         {
             currentWaypointIndex = 0;
-            StartCoroutine(MoveToNextWaypoint()); 
+            StartCoroutine(MoveToNextWaypoint());
+            isCoroutineRunning = true; 
         }
         else
         {
             Debug.LogError("No patrol waypoints assigned to the NPC.");
         }
 
-        // Start the movement coroutine
-        StartCoroutine(MoveToNextWaypoint());
         SetCharacterData(characterData);
     }
 
+
     void Update()
     {
-        if (characterProfile.activeSelf)
-        {
-            isMouseHovering = true;
-        }
-        else
-        {
-            isMouseHovering = false;
-        }
-
         // Add the following line to make sure SetLovePartner is called continuously
         if (inLove && !isTaken && lovePartner == null && !LoveSpellManager.Instance.IsNPCInAnyCouple(this))
         {
             SetLovePartner();
         }
-    }
 
+        if (GameManager.Instance.GetGameState() == GameManager.GameState.PAUSE || isMouseHovering)
+        {
+            StopMovementCoroutine();
+        }
+        else
+        {
+            StartMovementCoroutine();
+        }
+
+
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (isMouseHovering && GameManager.Instance.GetGameState() != GameManager.GameState.PAUSE)
+            {
+                ShowProfile(); 
+            }
+        } 
+    }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro; 
 
 public class ProfileManager : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class ProfileManager : MonoBehaviour
     [SerializeField] Button nextButton;
     [SerializeField] Button closeButton; 
     [SerializeField] AudioClip buttonSound; 
-
+         
     private AudioManager audioManager;
     private int currentPage = 0;
     public bool resetPage = false; 
@@ -138,12 +139,19 @@ public class ProfileManager : MonoBehaviour
 
     void PlayButtonSound()
     {
-
+        audioManager.PlayOneShot(buttonSound, false); 
     }
 
     public void SetPage(int pageNum)
     {
         currentPage = pageNum;
         resetPage = true; 
+    }
+    private void Update()
+    {
+        if (GameManager.Instance.GetGameState() == GameManager.GameState.PAUSE)
+        {
+            characterProfile.SetActive(false); 
+        }
     }
 }

@@ -25,9 +25,12 @@ public class Player : MonoBehaviour
         {
             if (!characterProfile.activeSelf || !introDialogue.activeSelf || !outroDialogue.activeSelf) 
             {
-                mx = Input.GetAxisRaw("Horizontal");
-                my = Input.GetAxisRaw("Vertical");
-                RotatePlayerTowardsCursor();
+                if (GameManager.Instance.GetGameState() != GameManager.GameState.PAUSE)
+                {
+                    mx = Input.GetAxisRaw("Horizontal");
+                    my = Input.GetAxisRaw("Vertical");
+                    RotatePlayerTowardsCursor();
+                }
             }
             else
             {
@@ -41,25 +44,28 @@ public class Player : MonoBehaviour
 
         if (epilogues.activeSelf)
         {
-            // Pause the game
+
             Time.timeScale = 0f;
         }
         else
         {
-            // Resume the game
             Time.timeScale = 1f;
         }
     }
     private void FixedUpdate()
     {
-        if (!characterProfile.activeSelf || !introDialogue.activeSelf)
+        if (GameManager.Instance.GetGameState() != GameManager.GameState.PAUSE) 
         {
-            rb.velocity = new Vector2(mx, my).normalized * speed;
+            if (!characterProfile.activeSelf || !introDialogue.activeSelf)
+            {
+                rb.velocity = new Vector2(mx, my).normalized * speed;
+            }
+            else
+            {
+                rb.velocity = Vector3.zero;
+            }
         }
-        else
-        {
-            rb.velocity = Vector3.zero;
-        }
+        
     }
 
     private void RotatePlayerTowardsCursor()

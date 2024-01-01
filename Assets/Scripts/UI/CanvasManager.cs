@@ -99,6 +99,7 @@ public class CanvasManager : MonoBehaviour
             EventTrigger resumeGameTrigger = resumeGame.gameObject.AddComponent<EventTrigger>();
             AddPointerEnterEvent(resumeGameTrigger, PlayButtonSound); 
             resumeGame.onClick.AddListener(UnpauseGame);
+            
         }
 
         if (returnToMenuButton)
@@ -145,7 +146,8 @@ public class CanvasManager : MonoBehaviour
             if (pauseMenu.activeSelf)
             {
                 Time.timeScale = 0f; 
-                GameManager.Instance.SwitchState(GameManager.GameState.PAUSE);   
+                GameManager.Instance.SwitchState(GameManager.GameState.PAUSE);
+                Time.timeScale = 0f;
                 asm.PlayOneShot(pauseSound, false);
                 pauseMenu.SetActive(true);
             }
